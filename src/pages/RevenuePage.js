@@ -241,9 +241,7 @@ const DashboardItems = [
           }
         ],
         dimensions: [
-          "CmsBartendrBartendrusers.firstname",
-          "CmsBartendrOrders.user",
-          "CmsBartendrBartendrusers.lastname"
+          "CmsBartendrBartendrusers.username",
         ],
         segments: [
           "CmsBartendrOrders.shiftStatus"
@@ -253,33 +251,51 @@ const DashboardItems = [
     },
     size: 12
   },
-  /*{
+  {
     id: 7,
-    name: "Last Events",
+    name: "Users",
     vizState: {
       query: {
-        measures: [],
+        measures: [
+          "CmsBartendrOrderlineitems.quantity",
+          "CmsBartendrOrders.count",
+          "CmsBartendrOrderlineitems.price"
+        ],
         timeDimensions: [
           {
-            dimension: "Events.timestamp"
+            dimension: "CmsBartendrOrders.createddate",
+            dateRange: "Today"
+          }
+        ],
+        order: {
+          "CmsBartendrOrders.createddate": "desc"
+        },
+        filters: [
+          {
+            dimension: "CmsBartendrOrders.storeId",
+            operator: "equals",
+            values: [
+              "10"
+            ]
           }
         ],
         dimensions: [
-          "Events.anonymousId",
-          "Events.eventType",
-          "Events.minutesAgoHumanized",
-          "Events.timestamp"
-        ],
-        filters: [],
-        order: {
-          "Events.timestamp": "desc"
-        },
-        limit: 10
+          "CmsBartendrBartendrusers.username",
+          "CmsBartendrOrderlineitems.paymenttype"
+        ]
       },
-      chartType: "table"
+      chartType: "table",
+      colums: [
+        { title: "Date", dataIndex: "CmsBartendrOrders.createddate" },
+        { title: "User", dataIndex: "CmsBartendrBartendrusers.username" },
+        { title: "Payment Type", dataIndex: "CmsBartendrOrderlineitems.paymenttype" },
+        { title: "Orders", dataIndex: "CmsBartendrOrders.count"},
+        { title: "Total Items", dataIndex: "CmsBartendrOrderlineitems.quantity"},
+        { title: "Total Amount", dataIndex: "CmsBartendrOrderlineitems.price"}
+      ]
     },
     size: 24
-  },*/
+  },
 ];
 
 const RevenuePage = () => {
