@@ -10,163 +10,69 @@ const DashboardItems = [
     name: "Total Orders",
     vizState: {
       query: {
-        order: {},
-        measures: [
+        "measures": [
           "CmsBartendrOrders.count"
         ],
-        timeDimensions: [
+        "timeDimensions": [
           {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
+            "dimension": "CmsBartendrOrderlineitems.createddate",
+            "dateRange": "This year"
           }
         ],
-        filters: [
+        "order": {},
+        "filters": [
           {
             "dimension": "CmsBartendrOrders.storeId",
             "operator": "equals",
             "values": [
               "10"
             ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
           }
         ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
+        "dimensions": [],
+        "segments": [
+          "CmsBartendrOrderlineitems.istreat"
         ]
       },
       chartType: "number"
     },
-    size: 6
+    size: 12
   },
   {
     id: 2,
     name: "Total Amount",
     vizState: {
       query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrders.totalamount"
+        "measures": [
+          "CmsBartendrOrderprintinglineitems.originalpricesum"
         ],
-        timeDimensions: [
+        "timeDimensions": [
           {
             "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
+            "dateRange": "This year"
           }
         ],
-        filters: [
+        "order": {},
+        "filters": [
           {
             "dimension": "CmsBartendrOrders.storeId",
             "operator": "equals",
             "values": [
               "10"
             ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
           }
         ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
+        "dimensions": [],
+        "segments": [
+          "CmsBartendrOrderlineitems.istreat"
         ]
       },
       chartType: "number"
     },
-    size: 6
+    size: 12
   },
-  {
+/*  {
     id: 3,
-    name: "Total Items",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrderlineitems.quantity"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 4,
-    name: "Per Guest",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrders.avgamount"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 5,
     name: "Progress",
     vizState: {
       query: {
@@ -209,7 +115,7 @@ const DashboardItems = [
     size: 12
   },
   {
-    id: 6,
+    id: 4,
     name: "Top 5 in revenue",
     vizState: {
       query: {
@@ -253,30 +159,46 @@ const DashboardItems = [
     },
     size: 12
   },
-  /*{
-    id: 7,
-    name: "Last Events",
+  {
+    id: 5,
+    name: "Report",
     vizState: {
       query: {
-        measures: [],
         timeDimensions: [
           {
-            dimension: "Events.timestamp"
+            dimension: "CmsBartendrOrderprintinglineitems.createddate",
+            granularity: "day"
           }
         ],
-        dimensions: [
-          "Events.anonymousId",
-          "Events.eventType",
-          "Events.minutesAgoHumanized",
-          "Events.timestamp"
-        ],
-        filters: [],
         order: {
-          "Events.timestamp": "desc"
+          "CmsBartendrOrderprintinglineitems.totalpricesum": "desc"
         },
-        limit: 10
+        filters: [
+          {
+            dimension: "CmsBartendrPrintings.storeId",
+            operator: "equals",
+            values: [
+              "10"
+            ]
+          }
+        ],
+        measures: [
+          "CmsBartendrOrderprintinglineitems.totalpricesum",
+          "CmsBartendrOrderprintinglineitems.netpricesum",
+          "CmsBartendrOrderprintinglineitems.vatpricesum"
+        ],
+        dimensions: [
+          "CmsBartendrVats.Percentage"
+        ]
       },
-      chartType: "table"
+      chartType: "table",
+      colums: [
+        { title: "Created At", dataIndex: "CmsBartendrOrderprintinglineitems.createddate" },
+        { title: "Vat Percent", dataIndex: "CmsBartendrVats.Percentage" },
+        { title: "Net Amount", dataIndex: "CmsBartendrOrderprintinglineitems.netpricesum" },
+        { title: "Vat Amount", dataIndex: "CmsBartendrOrderprintinglineitems.vatpricesum"},
+        { title: "Total", dataIndex: "CmsBartendrOrderprintinglineitems.totalpricesum"}
+      ]
     },
     size: 24
   },*/
@@ -309,7 +231,24 @@ const TreatPage = () => {
     </div>
   );
 
-  return (
+  return DashboardItems.length ? (
+    <div
+      style={{
+        padding: "0 12px 12px 12px",
+        margin: "10px 8px"
+      }}>
+      <Row
+        style={{
+          padding: "0 20px"
+        }}
+      ></Row>
+      <Row>
+        <Dashboard dashboardItems={DashboardItems}>
+          {DashboardItems.map(dashboardItem)}
+        </Dashboard>
+      </Row>
+    </div>
+  ) : (
     <Empty />
   );
 };

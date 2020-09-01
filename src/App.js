@@ -14,7 +14,6 @@ import {
 } from '@ant-design/icons';
 import cubejs from "@cubejs-client/core";
 import { CubeProvider } from "@cubejs-client/react";
-import WebSocketTransport from "@cubejs-client/ws-transport";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import cubejsLogo from "./cubejs-logo.png";
@@ -36,12 +35,12 @@ let API_URL;
 if (process.env.NODE_ENV === 'production') {
   API_URL = window.location.origin.replace('http', 'ws').replace('https', 'wss')
 } else {
-  API_URL = "https://8out.habilelabs.in"
-  // API_URL = "http://localhost:5000"
+  // API_URL = "https://8out.habilelabs.in"
+  API_URL = "http://localhost:5000"
 }
 
 const cubejsApi = cubejs(
-  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiT3duZXIiLCJJRCI6NTQsIk93bmVyVXNlcklEIjpudWxsLCJTdG9yZXMiOlsxMCwyMywxMiw5LDEwLDExLDEyXSwiU2Vzc2lvbiI6ImZkOWM1OWU5LTRhYzMtNDhiNi04NjExLWVmMGY3NzBkMDMxYiIsImlhdCI6MTU5ODg2NjExNDAxNiwiZXhwIjoxNTk4ODgwNTE0MDE2LCJCcmFuZHMiOlsxLDE1LDM2XX0._ana2pDieE7nt3fg5_M74fIcAgPgoSjf8cWjqLnToZ4",
+  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiT3duZXIiLCJJRCI6NTQsIk93bmVyVXNlcklEIjpudWxsLCJTdG9yZXMiOlsxMCwyMywxMiw5LDEwLDExLDEyXSwiU2Vzc2lvbiI6IjU3NjE5NGNhLTYxM2UtNDU1OC04NzExLWQ5ZjNjYTZhNWNkMiIsImlhdCI6MTU5ODk0MDIzNjA5MCwiZXhwIjoxNTk4OTU0NjM2MDkwLCJCcmFuZHMiOlsxLDE1LDM2XX0.zS2lD3gx3deaBSOcnAqvH8qXxUpGqkdAEil22AjBClc",
   { apiUrl: API_URL + "/cubejs-api/v1", headers: {
        store: 10,
        brand: 1

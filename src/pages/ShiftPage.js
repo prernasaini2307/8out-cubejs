@@ -4,183 +4,169 @@ import ChartRenderer from "../components/ChartRenderer";
 import Dashboard from "../components/Dashboard";
 import DashboardItem from "../components/DashboardItem";
 
-const DashboardItems = [
-  {
-    id: 1,
-    name: "Total Orders",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrders.count"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 2,
-    name: "Total Amount",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrders.totalamount"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 3,
-    name: "Total Items",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrderlineitems.quantity"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 4,
-    name: "Per Guest",
-    vizState: {
-      query: {
-        order: {},
-        measures: [
-          "CmsBartendrOrders.avgamount"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        filters: [
-          {
-            "dimension": "CmsBartendrOrders.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          },
-          {
-            "dimension": "CmsBartendrOrders.status",
-            "operator": "lte",
-            "values": [
-              "3"
-            ]
-          }
-        ],
-        dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
-      },
-      chartType: "number"
-    },
-    size: 6
-  },
-  {
-    id: 5,
-    name: "Progress",
-    vizState: {
-      query: {
-        order: {
-          "CmsBartendrOrders.createddate": "asc"
+const DashboardItems = [{
+        id: 1,
+        name: "Total Orders",
+        vizState: {
+            query: {
+                order: {},
+                measures: [
+                    "CmsBartendrOrders.count"
+                ],
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrders.createddate",
+                    "dateRange": "Today"
+                }],
+                filters: [{
+                        "dimension": "CmsBartendrOrders.storeId",
+                        "operator": "equals",
+                        "values": [
+                            "10"
+                        ]
+                    },
+                    {
+                        "dimension": "CmsBartendrOrders.status",
+                        "operator": "lte",
+                        "values": [
+                            "3"
+                        ]
+                    }
+                ],
+                dimensions: [],
+                segments: [
+                    "CmsBartendrOrders.shiftStatus"
+                ]
+            },
+            chartType: "number"
         },
-        measures: [
-          "CmsBartendrOrders.totalamount"
-        ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrders.createddate",
-            "granularity": "hour",
-            "dateRange": "Today"
+        size: 6
+    },
+    {
+        id: 2,
+        name: "Total Amount",
+        vizState: {
+            query: {
+                order: {},
+                measures: [
+                    "CmsBartendrOrders.totalamount"
+                ],
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrderlineitems.createddate",
+                    "dateRange": "Today"
+                }],
+                filters: [{
+                        "dimension": "CmsBartendrOrders.storeId",
+                        "operator": "equals",
+                        "values": [
+                            "10"
+                        ]
+                    },
+                    {
+                        "dimension": "CmsBartendrOrders.status",
+                        "operator": "lte",
+                        "values": [
+                            "3"
+                        ]
+                    }
+                ],
+                dimensions: [],
+                segments: [
+                    "CmsBartendrOrders.shiftStatus"
+                ]
+            },
+            chartType: "number"
+        },
+        size: 6
+    },
+    {
+        id: 3,
+        name: "Total Items",
+        vizState: {
+            query: {
+                order: {},
+                measures: [
+                    "CmsBartendrOrderlineitems.quantity"
+                ],
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrderlineitems.createddate",
+                    "dateRange": "Today"
+                }],
+                filters: [{
+                        "dimension": "CmsBartendrOrders.storeId",
+                        "operator": "equals",
+                        "values": [
+                            "10"
+                        ]
+                    },
+                    {
+                        "dimension": "CmsBartendrOrders.status",
+                        "operator": "lte",
+                        "values": [
+                            "3"
+                        ]
+                    }
+                ],
+                dimensions: [],
+                segments: [
+                    "CmsBartendrOrders.shiftStatus"
+                ]
+            },
+            chartType: "number"
+        },
+        size: 6
+    },
+    {
+        id: 4,
+        name: "Per Guest",
+        vizState: {
+            query: {
+                order: {},
+                measures: [
+                    "CmsBartendrOrders.avgamount"
+                ],
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrders.createddate",
+                    "dateRange": "Today"
+                }],
+                filters: [{
+                        "dimension": "CmsBartendrOrders.storeId",
+                        "operator": "equals",
+                        "values": [
+                            "10"
+                        ]
+                    },
+                    {
+                        "dimension": "CmsBartendrOrders.status",
+                        "operator": "lte",
+                        "values": [
+                            "3"
+                        ]
+                    }
+                ],
+                dimensions: [],
+                segments: [
+                    "CmsBartendrOrders.shiftStatus"
+                ]
+            },
+            chartType: "number"
+        },
+        size: 6
+    },
+    {
+        id: 5,
+        name: "Progress",
+        vizState: {
+            query: {
+                order: {
+                    "CmsBartendrOrders.createddate": "asc"
+                },
+                measures: [
+                    "CmsBartendrOrders.totalamount"
+                ],
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrders.createddate",
+                    "granularity": "hour",
+                    "dateRange": "Today"
           }
         ],
         filters: [
@@ -217,11 +203,10 @@ const DashboardItems = [
         measures: [
           "CmsBartendrOrders.totalamount"
         ],
-        timeDimensions: [
-          {
-            "dimension": "CmsBartendrOrders.createddate",
-            "granularity": "day",
-            "dateRange": "Today"
+                timeDimensions: [{
+                    "dimension": "CmsBartendrOrders.createddate",
+                    "granularity": "day",
+                    "dateRange": "Today"
           }
         ],
         filters: [
@@ -241,9 +226,7 @@ const DashboardItems = [
           }
         ],
         dimensions: [
-          "CmsBartendrBartendrusers.firstname",
-          "CmsBartendrOrders.user",
-          "CmsBartendrBartendrusers.lastname"
+          "CmsBartendrBartendrusers.username",
         ],
         segments: [
           "CmsBartendrOrders.shiftStatus"
