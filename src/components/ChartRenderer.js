@@ -111,7 +111,7 @@ const TypeToChartComponent = {
       <Table
         pagination={true}
         columns={resultSet.cols}
-        dataSource={resultSet.tablePivot().map((row, index) => {
+        dataSource={resultSet.tablePivot({"fillMissingDates": false}).map((row, index) => {
           row['key'] = index;
           return row
         })}

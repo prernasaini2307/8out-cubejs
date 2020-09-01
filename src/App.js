@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const cubejsApi = cubejs(
-  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiT3duZXIiLCJJRCI6NTQsIk93bmVyVXNlcklEIjpudWxsLCJTdG9yZXMiOlsxMCwyMywxMiw5LDEwLDExLDEyXSwiU2Vzc2lvbiI6IjU3NjE5NGNhLTYxM2UtNDU1OC04NzExLWQ5ZjNjYTZhNWNkMiIsImlhdCI6MTU5ODk0MDIzNjA5MCwiZXhwIjoxNTk4OTU0NjM2MDkwLCJCcmFuZHMiOlsxLDE1LDM2XX0.zS2lD3gx3deaBSOcnAqvH8qXxUpGqkdAEil22AjBClc",
+  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiT3duZXIiLCJJRCI6NTQsIk93bmVyVXNlcklEIjpudWxsLCJTdG9yZXMiOlsxMCwyMywxMiw5LDEwLDExLDEyXSwiU2Vzc2lvbiI6IjU3NjE5NGNhLTYxM2UtNDU1OC04NzExLWQ5ZjNjYTZhNWNkMiIsImlhdCI6MTU5ODk1NjI1MjM4OSwiZXhwIjoxNTk4OTcwNjUyMzg5LCJCcmFuZHMiOlsxLDE1LDM2XX0.nDXRxrny0oYFLYhnr894C5Nc-LrzuUtKJ6a7CGM3e44",
   { apiUrl: API_URL + "/cubejs-api/v1", headers: {
        store: 10,
        brand: 1
