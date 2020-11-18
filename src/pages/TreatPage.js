@@ -123,7 +123,7 @@ const DashboardItems = [
           "CmsBartendrOrderlineitems.discountsSum": "desc"
         },
         "dimensions": [
-          "CmsBartendrOrderlineitems.DiscountByUser"
+          "CmsBartendrBartendrusers.username"
         ],
         "filters": [
           {
@@ -150,7 +150,7 @@ const DashboardItems = [
       query: {
         "dimensions": [
           "CmsBartendrCategories.name",
-          "CmsBartendrOrderlineitems.DiscountByUser",
+          "CmsBartendrBartendrusers.username",
           "CmsBartendrOrderlineitems.discounts",
           "CmsBartendrOrderlineitems.quantityInd",
           "CmsBartendrOrderprintinglineitems.productname",
@@ -187,7 +187,7 @@ const DashboardItems = [
         { title: "Created At", dataIndex: "CmsBartendrOrderlineitems.createddate" },
         { title: "Category", dataIndex: "CmsBartendrCategories.name" },
         { title: "Product", dataIndex: "CmsBartendrOrderprintinglineitems.productname" },
-        { title: "By", dataIndex: "CmsBartendrOrderlineitems.DiscountByUser"},
+        { title: "By", dataIndex: "CmsBartendrBartendrusers.username"},
         { title: "Quantity", dataIndex: "CmsBartendrOrderlineitems.quantityInd"},
         { title: "Discount Amount", dataIndex: "CmsBartendrOrderlineitems.discounts"},
         { title: "Vat(%)", dataIndex: "CmsBartendrOrderprintinglineitems.vatPercentage"},

@@ -192,8 +192,8 @@ const DashboardItems = [
         "timeDimensions": [
           {
             "dimension": "CmsBartendrOrderlineitems.createddate",
-            "granularity": "day",
-            "dateRange": "This quarter"
+            "granularity": "month",
+            "dateRange": "This year"
           }
         ],
         "order": {},

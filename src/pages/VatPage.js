@@ -10,25 +10,46 @@ const DashboardItems = [
     name: "Receipts",
     vizState: {
       query: {
+        measures: [
+          "CmsBartendrPrintings.count"
+        ],
         timeDimensions: [
           {
-            dimension: "CmsBartendrOrderprintinglineitems.createddate",
-            dateRange: "Today"
+            dimension: "CmsBartendrPrintings.createddate",
+            granularity: "day",
+            dateRange: "This week"
           }
         ],
         order: {},
-        filters: [{
-          dimension: "CmsBartendrPrintings.storeId",
-          operator: "equals",
-          values: [
-            "10"
-          ]
-        }],
-        dimensions: [],
-        measures: [
-          "CmsBartendrOrderprintinglineitems.TotalVatsum24"
-        ],
-        segments: []
+        filters: [
+          {
+            dimension: "CmsBartendrPrintings.storeId",
+            operator: "equals",
+            values: [
+              "10"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.status",
+            operator: "equals",
+            values: [
+              "Active"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.type",
+            operator: "equals",
+            values: [
+              "Invoice",
+              "InvoiceReturn",
+              "Receipt",
+              "ReceiptReturn",
+              "SelfDelivery",
+              "InvoiceCancel",
+              "Cancel"
+            ]
+          }
+        ]
       },
       chartType: "number"
     },
@@ -39,27 +60,46 @@ const DashboardItems = [
     name: "Total Vat 13",
     vizState: {
       query: {
-        "timeDimensions": [
-          {
-            dimension: "CmsBartendrOrderprintinglineitems.createddate",
-            dateRange: "Today"
-          }
-        ],
-        "order": {},
-        "filters": [
-          {
-            "dimension": "CmsBartendrPrintings.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          }
-        ],
-        "dimensions": [],
-        "measures": [
+        measures: [
           "CmsBartendrOrderprintinglineitems.TotalVatsum13"
         ],
-        "segments": []
+        timeDimensions: [
+          {
+            dimension: "CmsBartendrPrintings.createddate",
+            granularity: "day",
+            dateRange: "This week"
+          }
+        ],
+        order: {},
+        filters: [
+          {
+            dimension: "CmsBartendrPrintings.storeId",
+            operator: "equals",
+            values: [
+              "10"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.status",
+            operator: "equals",
+            values: [
+              "Active"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.type",
+            operator: "equals",
+            values: [
+              "Invoice",
+              "InvoiceReturn",
+              "Receipt",
+              "ReceiptReturn",
+              "SelfDelivery",
+              "InvoiceCancel",
+              "Cancel"
+            ]
+          }
+        ]
       },
       chartType: "number"
     },
@@ -70,27 +110,46 @@ const DashboardItems = [
     name: "Total Vat 24",
     vizState: {
       query: {
-        "timeDimensions": [
-          {
-            "dimension": "CmsBartendrOrderprintinglineitems.createddate",
-            "dateRange": "Today"
-          }
-        ],
-        "order": {},
-        "filters": [
-          {
-            "dimension": "CmsBartendrPrintings.storeId",
-            "operator": "equals",
-            "values": [
-              "10"
-            ]
-          }
-        ],
-        "dimensions": [],
-        "measures": [
+        measures: [
           "CmsBartendrOrderprintinglineitems.TotalVatsum24"
         ],
-        "segments": []
+        timeDimensions: [
+          {
+            dimension: "CmsBartendrPrintings.createddate",
+            granularity: "day",
+            dateRange: "This week"
+          }
+        ],
+        order: {},
+        filters: [
+          {
+            dimension: "CmsBartendrPrintings.storeId",
+            operator: "equals",
+            values: [
+              "10"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.status",
+            operator: "equals",
+            values: [
+              "Active"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.type",
+            operator: "equals",
+            values: [
+              "Invoice",
+              "InvoiceReturn",
+              "Receipt",
+              "ReceiptReturn",
+              "SelfDelivery",
+              "InvoiceCancel",
+              "Cancel"
+            ]
+          }
+        ]
       },
       chartType: "number"
     },
@@ -101,27 +160,43 @@ const DashboardItems = [
     name: "Total Amount",
     vizState: {
       query: {
-        "timeDimensions": [
+        measures: [
+          "CmsBartendrPrintings.totalVatAmount"
+        ],
+        timeDimensions: [
           {
-            "dimension": "CmsBartendrOrderprintinglineitems.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrPrintings.createddate",
+            granularity: "day",
+            dateRange: "This week"
           }
         ],
-        "order": {},
-        "filters": [
+        order: {
+          "CmsBartendrPrintings.createddate": "asc"
+        },
+        filters: [
           {
-            "dimension": "CmsBartendrPrintings.storeId",
-            "operator": "equals",
-            "values": [
+            dimension: "CmsBartendrPrintings.storeId",
+            operator: "equals",
+            values: [
               "10"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.status",
+            operator: "equals",
+            values: [
+              "Active"
+            ]
+          },
+          {
+            dimension: "CmsBartendrPrintings.type",
+            operator: "equals",
+            values: [
+              "Receipt"
             ]
           }
         ],
-        "dimensions": [],
-        "measures": [
-          "CmsBartendrOrderprintinglineitems.totalpricesum"
-        ],
-        "segments": []
+        dimensions: []
       },
       chartType: "number"
     },

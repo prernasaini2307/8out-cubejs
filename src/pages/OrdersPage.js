@@ -16,8 +16,8 @@ const DashboardItems = [
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrOrders.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:14:12.747Z"],
           }
         ],
         filters: [
@@ -56,8 +56,9 @@ const DashboardItems = [
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrOrderlineitems.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:14:12.747Z"],
+            granularity: 'day'
           }
         ],
         filters: [
@@ -77,9 +78,9 @@ const DashboardItems = [
           }
         ],
         dimensions: [],
-        segments: [
+        /*segments: [
           "CmsBartendrOrders.shiftStatus"
-        ]
+        ]*/
       },
       chartType: "number"
     },
@@ -96,8 +97,9 @@ const DashboardItems = [
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrOrderlineitems.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:14:12.747Z"],
+            granularity: 'day'
           }
         ],
         filters: [
@@ -136,8 +138,9 @@ const DashboardItems = [
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrders.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrOrderlineitems.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:14:12.747Z"],
+            granularity: 'day'
           }
         ],
         filters: [
@@ -200,9 +203,7 @@ const DashboardItems = [
           }
         ],
         dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
+        segments: []
       },
       chartType: "line"
     },
@@ -280,7 +281,7 @@ const DashboardItems = [
           "CmsBartendrOrders.Type",
           "CmsBartendrBartendrusers.username",
           "CmsBartendrOrders.statusInfo",
-          "CmsBartendrOrders.tableid",
+          "CmsBartendrOrders.tableId",
           "CmsBartendrOrders.OrderCode",
           "CmsBartendrPrintings.serialnumber",
           "CmsBartendrPrintings.totalamountInd"
@@ -297,7 +298,7 @@ const DashboardItems = [
         { title: "Order Type", dataIndex: "CmsBartendrOrders.Type" },
         { title: "Assigned User", dataIndex: "CmsBartendrBartendrusers.username"},
         { title: "Order Status", dataIndex: "CmsBartendrOrders.statusInfo"},
-        { title: "Table No", dataIndex: "CmsBartendrOrders.tableid"},
+        { title: "Table No", dataIndex: "CmsBartendrOrders.tableId"},
         { title: "Order Code", dataIndex: "CmsBartendrOrders.OrderCode"},
         { title: "Serial No", dataIndex: "CmsBartendrPrintings.serialnumber"},
         { title: "Total Amount", dataIndex: "CmsBartendrPrintings.totalamountInd"}

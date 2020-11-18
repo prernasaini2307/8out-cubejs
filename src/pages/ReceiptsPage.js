@@ -15,8 +15,8 @@ const DashboardItems = [
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrPrintings.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrPrintings.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:58:30.857Z"]
           }
         ],
         order: {},
@@ -32,10 +32,10 @@ const DashboardItems = [
             ]
           },
           {
-            "dimension": "CmsBartendrOrders.status",
+            "dimension": "CmsBartendrPrintings.type",
             "operator": "equals",
             "values": [
-              "5"
+              "Receipt", "ReceiptReturn", "Invoice", "InvoiceReturn", "SelfDelivery", "Cancel"
             ]
           }
         ]
@@ -55,7 +55,7 @@ const DashboardItems = [
         timeDimensions: [
           {
             dimension: "CmsBartendrPrintings.createddate",
-            dateRange: "Today"
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:58:30.857Z"]
           }
         ],
         order: {},
@@ -71,10 +71,10 @@ const DashboardItems = [
             ]
           },
           {
-            dimension: "CmsBartendrOrders.status",
+            dimension: "CmsBartendrPrintings.type",
             operator: "equals",
             values: [
-              "5"
+              "Receipt", "ReceiptReturn", "Invoice", "InvoiceReturn", "SelfDelivery", "Cancel"
             ]
           }
         ]
@@ -89,12 +89,12 @@ const DashboardItems = [
     vizState: {
       query: {
         measures: [
-          "CmsBartendrOrderlineitems.count"
+          "CmsBartendrPrintinglineitems.count"
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrPrintings.createddate",
-            "dateRange": "Today"
+            dimension: "CmsBartendrPrintings.createddate",
+            dateRange: ["2020-11-16T18:30:00.000Z","2020-11-18T07:58:30.857Z"]
           }
         ],
         order: {},
@@ -110,10 +110,10 @@ const DashboardItems = [
             ]
           },
           {
-            dimension: "CmsBartendrOrders.status",
+            dimension: "CmsBartendrPrintings.type",
             operator: "equals",
             values: [
-              "5"
+              "Receipt", "ReceiptReturn", "Invoice", "InvoiceReturn", "SelfDelivery", "Cancel"
             ]
           }
         ]
@@ -128,16 +128,16 @@ const DashboardItems = [
     vizState: {
       query: {
         order: {
-          "CmsBartendrOrders.createddate": "asc"
+          "CmsBartendrPrintings.totalamount": "desc"
         },
         measures: [
-          "CmsBartendrOrders.totalamount"
+          "CmsBartendrPrintings.totalamount"
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrders.createddate",
-            "granularity": "hour",
-            "dateRange": "Today"
+            "dimension": "CmsBartendrPrintings.createddate",
+            "granularity": "week",
+            "dateRange": "Last year"
           }
         ],
         filters: [
@@ -149,17 +149,20 @@ const DashboardItems = [
             ]
           },
           {
-            "dimension": "CmsBartendrOrders.status",
+            "dimension": "CmsBartendrPrintings.type",
             "operator": "equals",
             "values": [
-              "5"
+              "Receipt",
+              "ReceiptReturn",
+              "Invoice",
+              "InvoiceReturn",
+              "SelfDelivery",
+              "Cancel"
             ]
           }
         ],
         dimensions: [],
-        segments: [
-          "CmsBartendrOrders.shiftStatus"
-        ]
+        segments: []
       },
       chartType: "line"
     },
@@ -170,15 +173,17 @@ const DashboardItems = [
     name: "Top 5 in revenue",
     vizState: {
       query: {
-        order: {},
+        order: {
+          "CmsBartendrPrintings.totalamount": "desc"
+        },
         measures: [
-          "CmsBartendrOrders.totalamount"
+          "CmsBartendrPrintings.totalamount"
         ],
         timeDimensions: [
           {
-            "dimension": "CmsBartendrOrders.createddate",
-            "granularity": "day",
-            "dateRange": "Today"
+            "dimension": "CmsBartendrPrintings.createddate",
+            "granularity": "week",
+            "dateRange": "Last year"
           }
         ],
         filters: [
@@ -190,21 +195,25 @@ const DashboardItems = [
             ]
           },
           {
-            "dimension": "CmsBartendrOrders.status",
+            "dimension": "CmsBartendrPrintings.type",
             "operator": "equals",
             "values": [
-              "5"
+              "Receipt",
+              "ReceiptReturn",
+              "Invoice",
+              "InvoiceReturn",
+              "SelfDelivery",
+              "Cancel"
             ]
           }
         ],
         dimensions: [
-          "CmsBartendrBartendrusers.firstname",
-          "CmsBartendrOrders.user",
-          "CmsBartendrBartendrusers.lastname"
+          "CmsBartendrBartendrusers.username"
         ],
         segments: [
-          "CmsBartendrOrders.shiftStatus"
+          // "CmsBartendrOrders.shiftStatus"
         ],
+        limit:5
       },
       chartType: "pie"
     },
@@ -220,7 +229,7 @@ const DashboardItems = [
           "CmsBartendrOrders.Type",
           "CmsBartendrPrintings.cashdesk",
           "CmsBartendrPrintings.status",
-          "CmsBartendrOrders.tableid",
+          "CmsBartendrOrders.tableId",
           "CmsBartendrOrders.OrderCode",
           "CmsBartendrPrintings.serialnumber",
           "CmsBartendrPrintings.totalamountInd"
@@ -254,7 +263,7 @@ const DashboardItems = [
         { title: "Order Type", dataIndex: "CmsBartendrOrders.Type" },
         { title: "Cash Desk", dataIndex: "CmsBartendrPrintings.cashdesk"},
         { title: "Print Status", dataIndex: "CmsBartendrPrintings.status"},
-        { title: "Table Id", dataIndex: "CmsBartendrOrders.tableid"},
+        { title: "Table Id", dataIndex: "CmsBartendrOrders.tableId"},
         { title: "Order Code", dataIndex: "CmsBartendrOrders.OrderCode"},
         { title: "Print Serial", dataIndex: "CmsBartendrPrintings.serialnumber"},
         { title: "Total Amount", dataIndex: "CmsBartendrPrintings.totalamountInd"}

@@ -10,7 +10,7 @@ const minutesAgo = ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
 const TypeToChartComponent = {
   line: ({ resultSet }) => {
     const data = {
-      labels: resultSet.categories().map(c => moment(c.category).format("mm:ss")),
+      labels: resultSet.categories().map(c => moment(c.category).format("yyyy:MM:dd mm:ss")),
       datasets: resultSet.series().map((s, index) => ({
         label: s.title,
         data: s.series.map(r => r.value),

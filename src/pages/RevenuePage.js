@@ -213,7 +213,9 @@ const DashboardItems = [
     name: "Top 5 in revenue",
     vizState: {
       query: {
-        order: {},
+        order: {
+          "CmsBartendrOrders.totalamount": "desc"
+        },
         measures: [
           "CmsBartendrOrders.totalamount"
         ],
@@ -246,6 +248,7 @@ const DashboardItems = [
         segments: [
           "CmsBartendrOrders.shiftStatus"
         ],
+        limit: 5
       },
       chartType: "pie"
     },

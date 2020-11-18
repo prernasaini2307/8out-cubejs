@@ -35,12 +35,12 @@ let API_URL;
 if (process.env.NODE_ENV === 'production') {
   API_URL = window.location.origin.replace('http', 'ws').replace('https', 'wss')
 } else {
-  // API_URL = "https://8out.habilelabs.in"
-  API_URL = "http://localhost:5000"
+  API_URL = "https://8out.habilelabs.in"
+  // API_URL = "http://localhost:5000"
 }
 
 const cubejsApi = cubejs(
-  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiT3duZXIiLCJJRCI6NTQsIk93bmVyVXNlcklEIjpudWxsLCJTdG9yZXMiOlsxMCwyMywxMiw5LDEwLDExLDEyXSwiU2Vzc2lvbiI6IjU3NjE5NGNhLTYxM2UtNDU1OC04NzExLWQ5ZjNjYTZhNWNkMiIsImlhdCI6MTU5ODk1NjI1MjM4OSwiZXhwIjoxNTk4OTcwNjUyMzg5LCJCcmFuZHMiOlsxLDE1LDM2XX0.nDXRxrny0oYFLYhnr894C5Nc-LrzuUtKJ6a7CGM3e44",
+  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJRCI6MjMyLCJPd25lclVzZXJJRCI6bnVsbCwiU3RvcmVzIjpbXSwiU2Vzc2lvbiI6IjgxNzI1NDMyLWFhNzItNDgyNi1iZjhkLTIwMjhhNjZmZTk1NCIsImlhdCI6MTYwNTY5NTc2MDIzMywiZXhwIjoxNjA1NzEwMTYwMjMzLCJCcmFuZHMiOltdfQ.U7pE3les4gA1APGjN6xBo_j0L_CH994rAoskv1ywmW0",
   { apiUrl: API_URL + "/cubejs-api/v1", headers: {
        store: 10,
        brand: 1
