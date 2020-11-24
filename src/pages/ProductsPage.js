@@ -12,11 +12,13 @@ const DashboardItems = [
       query: {
         "timeDimensions": [
           {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "This year"
+            "dimension": "CmsBartendrOrders.createddate",
+            "dateRange": "Today"
           }
         ],
-        "order": {},
+        "order": {
+          "CmsBartendrOrders.createddate": "desc"
+        },
         "filters": [
           {
             "dimension": "CmsBartendrOrders.storeId",
@@ -43,11 +45,13 @@ const DashboardItems = [
       query: {
         "timeDimensions": [
           {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "This year"
+            "dimension": "CmsBartendrOrders.createddate",
+            "dateRange": "Today"
           }
         ],
-        "order": {},
+        "order": {
+          "CmsBartendrOrders.createddate": "desc"
+        },
         "filters": [
           {
             "dimension": "CmsBartendrOrders.storeId",
@@ -59,7 +63,7 @@ const DashboardItems = [
         ],
         "dimensions": [],
         "measures": [
-          "CmsBartendrOrderprintinglineitems.count"
+          "CmsBartendrOrderlineitems.count"
         ],
         "segments": []
       },
@@ -72,34 +76,41 @@ const DashboardItems = [
     name: "Total Cancelled Amount",
     vizState: {
       query: {
-        timeDimensions: [
+        "filters": [
           {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "dateRange": "This year"
-          }
-        ],
-        order: {},
-        filters: [
-          {
-            dimension: "CmsBartendrOrders.storeId",
-            operator: "equals",
-            values: [
+            "dimension": "CmsBartendrOrders.storeId",
+            "operator": "equals",
+            "values": [
               "10"
             ]
           },
           {
-            dimension: "CmsBartendrOrderlineitems.status",
-            operator: "equals",
-            values: [
-              "4"
+            "dimension": "CmsBartendrOrderlineitems.status",
+            "operator": "equals",
+            "values": [
+              "4",
+              "5"
             ]
+          },
+          {
+            "dimension": "CmsBartendrOrderlineitems.cancellationreason",
+            "operator": "set"
           }
         ],
-        dimensions: [],
-        measures: [
+        "order": {
+          "CmsBartendrOrders.createddate": "desc"
+        },
+        "timeDimensions": [
+          {
+            "dimension": "CmsBartendrOrders.createddate",
+            "dateRange": "This Week"
+          }
+        ],
+        "measures": [
           "CmsBartendrOrderlineitems.price"
         ],
-        segments: []
+        "segments": [],
+        "dimensions": []
       },
       chartType: "number"
     },
@@ -189,14 +200,6 @@ const DashboardItems = [
     name: "Items",
     vizState: {
       query: {
-        "timeDimensions": [
-          {
-            "dimension": "CmsBartendrOrderlineitems.createddate",
-            "granularity": "month",
-            "dateRange": "This year"
-          }
-        ],
-        "order": {},
         "filters": [
           {
             "dimension": "CmsBartendrOrders.storeId",
@@ -206,45 +209,54 @@ const DashboardItems = [
             ]
           }
         ],
+        "order": {
+          "CmsBartendrOrders.createddate": "desc"
+        },
+        "timeDimensions": [
+          {
+            "dimension": "CmsBartendrOrders.createddate",
+            "granularity": "day",
+            "dateRange": "This month"
+          }
+        ],
+        "measures": [],
+        "segments": [],
         "dimensions": [
           "CmsBartendrBartendrusers.username",
           "CmsBartendrOrders.Type",
-          "CmsBartendrOrders.OrderCode",
-          "CmsBartendrPrintings.totalamountInd",
           "CmsBartendrOrderlineitems.statusInfo",
+          "CmsBartendrOrderlineitems.cancellationreasonInfo",
           "CmsBartendrOrders.statusInfo",
-          "CmsBartendrOrderlineitems.cancellationreason",
           "CmsBartendrOrderlineitems.paymenttype",
           "CmsBartendrCatalogues.name",
           "CmsBartendrOrderlineitems.discounts",
-          "CmsBartendrOrderprintinglineitems.productname",
+          "CmsBartendrProducts.name",
           "CmsBartendrProducts.sku",
-          "CmsBartendrVats.Percentage",
-          "CmsBartendrOrderlineitems.netprice",
+          "CmsBartendrOrders.OrderCode",
+          "CmsBartendrOrderprintinglineitems.vatPercentage",
           "CmsBartendrOrderlineitems.vatamt",
+          "CmsBartendrOrderlineitems.netprice",
           "CmsBartendrOrderlineitems.pricewithvat",
           "CmsBartendrOrderlineitems.quantityInd",
           "CmsBartendrOrderlineitems.weight",
           "CmsBartendrProducts.measurement"
-        ],
-        "measures": [],
-        "segments": []
+        ]
       },
       chartType: "table",
       colums: [
-        { title: "Created At", dataIndex: "CmsBartendrOrderlineitems.createddate" },
+        { title: "Created At", dataIndex: "CmsBartendrOrders.createddate" },
         { title: "Order Type", dataIndex: "CmsBartendrOrders.Type" },
         { title: "Assigned User", dataIndex: "CmsBartendrBartendrusers.username"},
         { title: "Product Status", dataIndex: "CmsBartendrOrderlineitems.statusInfo"},
         { title: "Order Status", dataIndex: "CmsBartendrOrders.statusInfo"},
-        { title: "Reason", dataIndex: "CmsBartendrOrderlineitems.cancellationreason" },
+        { title: "Reason", dataIndex: "CmsBartendrOrderlineitems.cancellationreasonInfo" },
         { title: "Payment Type", dataIndex: "CmsBartendrOrderlineitems.paymenttype" },
         { title: "Catalogue", dataIndex: "CmsBartendrCatalogues.name" },
         { title: "Discounts", dataIndex: "CmsBartendrOrderlineitems.discounts" },
-        { title: "Product", dataIndex: "CmsBartendrOrderprintinglineitems.productname" },
+        { title: "Product", dataIndex: "CmsBartendrProducts.name" },
         { title: "Sku", dataIndex: "CmsBartendrProducts.sku" },
         { title: "Order Code", dataIndex: "CmsBartendrOrders.OrderCode"},
-        { title: "Vat(in %)", dataIndex: "CmsBartendrVats.Percentage"},
+        { title: "Vat(in %)", dataIndex: "CmsBartendrOrderprintinglineitems.vatPercentage"},
         { title: "Net Price", dataIndex: "CmsBartendrOrderlineitems.netprice"},
         { title: "Vat Price", dataIndex: "CmsBartendrOrderlineitems.vatamt"},
         { title: "Price", dataIndex: "CmsBartendrOrderlineitems.pricewithvat"},
